@@ -57,5 +57,10 @@ class conect {
         $stmt->bindValue(':defesa', $defesa);
         $stmt->execute();
     }
- 
+    function deleteFicha($id) {
+        $stmt = $this->pdo->prepare('DELETE FROM fichas WHERE id = :id');
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
+
 }
