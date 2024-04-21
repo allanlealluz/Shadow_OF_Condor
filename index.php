@@ -55,7 +55,7 @@ $fichas = $con->getFichas();
     <?php if(isset($_GET['edit'])): ?>
 <h2>Editar Ficha</h2>
 <form method="post" action="">
-<div class="mb-3">
+<div class="mb-3 bg-light">
     <input class="form-control" type="hidden" name="id" value="<?php echo $ficha['id']; ?>">
     <label class="form-label">Nome:</label>
     <input class="form-control" type="text" name="nome" value="<?php echo $ficha['nome']; ?>" required>
@@ -87,7 +87,13 @@ $fichas = $con->getFichas();
     <input class="form-control"type="submit" name="update" value="Atualizar">
 </form>
 </div>
-<?php endif; ?>
+<?php endif;
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $con->deleteFicha($id);
+    header('Location: index.php');
+}
+?>
 </table>
 </body>
 </html>

@@ -17,12 +17,6 @@ if(isset($_POST['submit'])){
     header('Location: index.php');
 }
 
-if(isset($_GET['delete'])){
-    $id = $_GET['delete'];
-    $con->deleteFicha($id);
-    header('Location: index.php');
-}
-
 if(isset($_POST['update'])){
     $id = $_POST['id'];
     $nome = $_POST['nome'];
