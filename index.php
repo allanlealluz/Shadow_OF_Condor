@@ -84,6 +84,8 @@ $fichas = $con->getFichas();
     <input class="form-control"type="text" name="pericia" value="<?php echo $ficha['pericias']; ?>" required>
     <label>Defesa:</label>
     <input class="form-control"type="number" name="defesa" value="<?php echo $ficha['defesa']; ?>" required>
+    <label>Imagem:</label>
+    <input class="form-contrl" type="file" name="img" id="">
 </div>
     <input class="form-control"type="submit" name="update" value="Atualizar">
 </form>

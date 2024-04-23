@@ -1,22 +1,28 @@
 <?php
 require_once 'connect.php';
-$con = new conect;
-if(isset($_POST['submit'])){
-    $nome = $_POST['nome'];
-    $vitalidade = $_POST['vitalidade'];
-    $força = $_POST['forca'];
-    $agi = $_POST['agi'];
-    $int = $_POST['int'];
-    $pre = $_POST['pre'];
+$con = new conect();
+if (isset($_POST['submit'])) {
+    $name = $_POST['nome'];
+    $health = $_POST['vitalidade'];
+    $strength = $_POST['forca'];
+    $dexterity = $_POST['agi'];
+    $intelligence = $_POST['int'];
+    $precision = $_POST['pre'];
     $vigor = $_POST['vigor'];
-    $itens = $_POST['itens'];
-    $pericia = $_POST['pericia'];
-    $defesa = $_POST['defesa'];
-
-    $con->addFicha($nome,$vitalidade,$força,$agi,$int,$pre,$vigor,$itens,$pericia,$defesa);
-    header('Location: index.php');
+    $items = $_POST['itens'];
+    $skills = $_POST['pericia'];
+    $defense = $_POST['defesa'];
+    if(isset($_FILES["img"])){
+        $file = $_FILES["img"];
+        $dir = 'images/';
+        $imagePath = $dir. basename($file['name']);
+        move_uploaded_file($file['tmp_name'], $imagePath);
+        
+    } else {
+        $imagePath = "not";
+    }
+    $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills, $defense,$imagePath);
 }
-
 if(isset($_POST['update'])){
     $id = $_POST['id'];
     $nome = $_POST['nome'];
@@ -50,7 +56,7 @@ if(isset($_POST['update'])){
 <a href="index.php"><h3 style="text-align:left;color:red;">Home</h3></a>
 </div>
 <div class="container bg-light ">
-<form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
 <div class="container-fluid">
     <label class="form-label">Nome:</label>
     <input class="form-control" type="text" name="nome" required>
@@ -72,6 +78,8 @@ if(isset($_POST['update'])){
     <input class="form-control"type="text" name="pericia" required>
     <label class="form-label">Defesa:</label>
     <input class="form-control" type="number" name="defesa" required>
+    <label>Imagem:</label>
+    <input class="form-control form-control-lg" type="file" name="img" id="">
     <input type="submit" name="submit" value="Adicionar">
     <div>
 </form>

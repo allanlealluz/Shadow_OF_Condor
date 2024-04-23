@@ -15,32 +15,44 @@ class conect {
         }
     }
 
-    function addFicha($nome,$vitalidade,$forca,$agi,$int,$pre,$vigor,$itens,$pericia,$defesa){
-        $itens_json = json_encode($itens);
-        $pericia_json = json_encode($pericia);
-    
-        $stmt = $this->pdo->prepare('INSERT INTO fichas (nome, vitalidade, forca, inte, agi, pre, vigor, itens, pericias, defesa) VALUES (:n, :v, :f, :i, :a, :p, :vg, :itens, :pe, :def)');
-        $stmt->bindValue(':n',$nome);
-        $stmt->bindValue(':v',$vitalidade);
-        $stmt->bindValue(':f',$forca);
-        $stmt->bindValue(':i',$int);
-        $stmt->bindValue(':a',$agi);
-        $stmt->bindValue(':p',$pre);
-        $stmt->bindValue(':vg',$vigor);
-        $stmt->bindValue(':itens',$itens_json);
-        $stmt->bindValue(':pe',$pericia_json);
-        $stmt->bindValue(':def',$defesa);
+    function addFicha(
+        $name,
+        $health,
+        $strength,
+        $dexterity,
+        $intelligence,
+        $precision,
+        $vigor,
+        $items,
+        $skills,
+        $defense,
+        $image
+    ) {
+        $encodedItems = json_encode($items);
+        $encodedSkills = json_encode($skills);
+
+        $query = 'INSERT INTO fichas (nome, vitalidade, forca, inte, agi, pre, vigor, itens, pericias, defesa, img)
+        VALUES (:name, :health, :strength, :dexterity, :intelligence, :precision, :vigor, :encodedItems, :encodedSkills, :defense, :image)';
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':health', $health);
+        $stmt->bindValue(':strength', $strength);
+        $stmt->bindValue(':dexterity', $dexterity);
+        $stmt->bindValue(':intelligence', $intelligence);
+        $stmt->bindValue(':precision', $precision);
+        $stmt->bindValue(':vigor', $vigor);
+        $stmt->bindValue(':encodedItems', $encodedItems);
+        $stmt->bindValue(':encodedSkills', $encodedSkills);
+        $stmt->bindValue(':defense', $defense);
+        $stmt->bindValue(':image', $image);
         $stmt->execute();
     }
+
     function getFichas() {
-        try {
-            $stmt = $this->pdo->prepare('SELECT * FROM fichas');
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return [];
-        }
+        $stmt = $this->pdo->prepare('SELECT * FROM fichas');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     function updateFicha($id, $nome, $vitalidade, $forca, $agi, $int, $pre, $vigor, $itens, $pericia, $defesa){
         $stmt = $this->pdo->prepare('UPDATE fichas SET nome = :nome, vitalidade = :vitalidade, forca = :forca, agi = :agi, inte = :int, pre = :pre, vigor = :vigor, itens = :itens, pericias = :pericia, defesa = :defesa WHERE id = :id');
