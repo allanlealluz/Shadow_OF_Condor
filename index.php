@@ -35,6 +35,7 @@ $fichas = $con->getFichas();
     </tr>
     <?php foreach($fichas as $ficha): ?>
     <tr>
+        <td><img src=""></td>
         <td><?php echo $ficha['id']; ?></td>
         <td><?php echo $ficha['nome']; ?></td>
         <td><?php echo $ficha['vitalidade']; ?></td>
