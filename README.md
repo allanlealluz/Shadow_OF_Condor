@@ -13,7 +13,7 @@ This project is a real-time chat role-playing game (RPG) system that uses PHP, J
 
 ## Getting Started
 To get started with the Shadow of Condor project, follow these steps:
-1. Clone the repository: `git clone https://github.com/your-username/shadow-of-condor.git`
+1. Clone the repository: `git clone https://github.com/allanlealluz/Shadow_OF_Condor.git`
 2. Install dependencies: `composer install`
 3. Set up your Firebase project and obtain the configuration file
 4. Place the Firebase configuration file in the project root directory
