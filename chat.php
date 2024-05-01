@@ -35,7 +35,7 @@
   form.addEventListener('submit', function(event) {
     event.preventDefault();
     const message = document.getElementById('message').value;
-    fetch(`sendMessage.php?name=admin&message=${encodeURIComponent(message)}`);
+    fetch(`sendMessage.php?name=admin&message=${message}`);
   });
 </script>
     </div>
