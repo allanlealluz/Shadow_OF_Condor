@@ -1,5 +1,6 @@
 <?php
 require_once 'connect.php';
+require __DIR__ . '/vendor/autoload.php';
 $con = new conect;
 $fichas = $con->getFichas();
 ?>

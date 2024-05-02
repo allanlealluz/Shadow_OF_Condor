@@ -9,4 +9,6 @@ if (isset($_GET['message']) && !empty($_GET['message'])) {
        'name' => $name,
        'message' => $message,
    ]);
+   echo $name;
+   echo $message;
 }
