@@ -1,9 +1,12 @@
 {
-    "autoload": {
-        "psr-4": {
-            "MyApp\\": "src"
-        }
-    },
+    
+    
+        "autoload": {
+            "classmap": [
+                "MyApp"
+            ]
+        },
+    
     "require": {
         "cboden/ratchet": "^0.4"
     }
