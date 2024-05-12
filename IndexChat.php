@@ -16,7 +16,7 @@ require __DIR__ . '/vendor/autoload.php';
         <?php include('chatController.php');?>
         </table>
         <form method="POST">
-             <input type="text" id='name' name="name" class="form-control" required>
+             <input type="text" id='names' name="name" class="form-control" required>
              <textarea name="message" id='message' class="form-control" required></textarea>
              <input type="submit" value="Enviar" class="btn btn-primary"  onclick="transmitMessage()">
         </form>
@@ -26,7 +26,7 @@ require __DIR__ . '/vendor/autoload.php';
 
   form.addEventListener('submit', function(event) {
     event.preventDefault();
-    const name = document.getElementById('name').value;
+    const name = document.getElementById('names').value;
     const message = document.getElementById('message').value;
     fetch(`sendMessage.php?name=${name}&message=${message}`);
   });
@@ -34,25 +34,27 @@ require __DIR__ . '/vendor/autoload.php';
 
 // Define the 
 var message = document.getElementById('message');
-const name = document.getElementById('name').value;
+var names = document.getElementById('names');
 
-function transmitMessage() {
-    socket.send( message.value,name.value );
+function transmitMessage(){
+    socket.send([names.value,',',message.value]);
 }
 
 socket.onmessage = function(e) {
     const table = document.getElementById('messages');
     var tr = document.createElement('tr');
-    var td = document.createElement('td');  // create a new paragraph element
-    td.textContent = e.data; 
+    var td = document.createElement('td'); 
+    var td2 = document.createElement('td'); // create a new paragraph element
+    data = e.data.split(",");
+    td.textContent = data[0]; 
+    td2.textContent = data[3]; 
+    console.log(data)
     tr.setAttribute('class','bg-light')
-    tr.appendChild(td);// set the text content of the paragraph element to the message received from the socket
+    tr.appendChild(td);
+    tr.appendChild(td2);// set the text content of the paragraph element to the message received from the socket
     table.appendChild(tr);
 }
     // Prevent the form from submitting and refreshing the page
-    $('form').submit(function(e) {
-        e.preventDefault();
-    });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </div>
