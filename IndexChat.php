@@ -13,23 +13,12 @@ require __DIR__ . '/vendor/autoload.php';
 <body class='bg-danger'>
     <div class="container bg-dark">
         <table class="table" id="messages">
-            <?php
-                include('config.php');
-                include('firebaseRDB.php');
-                $database = new firebaseRDB($databaseURL);
-                $films = $database->retrieve("film");
-                $films = json_decode($films, true);
-                if (is_array($films)) {
-                    foreach ($films as $film) {
-                        echo "<tr><td>{$film['name']}</td><td>{$film['message']}</td></tr>";
-                    }
-                }
-            ?>
+        <?php include('chatController.php');?>
         </table>
         <form method="POST">
-             <input type="text" name="name" class="form-control" required>
+             <input type="text" id='name' name="name" class="form-control" required>
              <textarea name="message" id='message' class="form-control" required></textarea>
-             <input type="submit" value="Enviar" class="btn btn-primary">
+             <input type="submit" value="Enviar" class="btn btn-primary"  onclick="transmitMessage()">
         </form>
 
 <script>
@@ -37,26 +26,29 @@ require __DIR__ . '/vendor/autoload.php';
 
   form.addEventListener('submit', function(event) {
     event.preventDefault();
+    const name = document.getElementById('name').value;
     const message = document.getElementById('message').value;
-    fetch(`sendMessage.php?name=admin&message=${message}`);
+    fetch(`sendMessage.php?name=${name}&message=${message}`);
   });
-  var conn = new WebSocket('ws://localhost:8080');
+  var socket  = new WebSocket('ws://localhost:8080');
 
-    conn.onopen = function(e) {
-        console.log("Conexão estabelecida!");
-    };
+// Define the 
+var message = document.getElementById('message');
+const name = document.getElementById('name').value;
 
-    conn.onmessage = function(e) {
-        var message = e.data;
-        $("#messages").append("<p>" + message + "</p>");
-    };
+function transmitMessage() {
+    socket.send( message.value,name.value );
+}
 
-    function sendMessage() {
-        var message = $("#message").val();
-        conn.send(message);
-        $("#message").val('');
-    }
-
+socket.onmessage = function(e) {
+    const table = document.getElementById('messages');
+    var tr = document.createElement('tr');
+    var td = document.createElement('td');  // create a new paragraph element
+    td.textContent = e.data; 
+    tr.setAttribute('class','bg-light')
+    tr.appendChild(td);// set the text content of the paragraph element to the message received from the socket
+    table.appendChild(tr);
+}
     // Prevent the form from submitting and refreshing the page
     $('form').submit(function(e) {
         e.preventDefault();
