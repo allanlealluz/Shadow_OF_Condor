@@ -1,6 +1,6 @@
 <?php 
-include('config.php');
-include('firebaseRDB.php');
+include('DB/config.php');
+include('DB/firebaseRDB.php');
 $database = new firebaseRDB($databaseURL);
 if (isset($_GET['message']) && !empty($_GET['message'])) {
    $name = $_GET['name']; // default name

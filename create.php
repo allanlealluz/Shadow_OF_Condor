@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once 'DB/connect.php';
 $con = new conect();
 if (isset($_POST['submit'])) {
     $name = $_POST['nome'];

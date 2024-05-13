@@ -2,7 +2,7 @@
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 class Chat implements MessageComponentInterface {
     protected $clients;
