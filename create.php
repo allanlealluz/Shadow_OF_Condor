@@ -54,6 +54,7 @@ if(isset($_POST['update'])){
 <div class="container">
 <h1 style="text-align:center;color:red;padding-bottom:1rem;">Sombra do Condor</h1>
 <a href="index.php"><h3 style="text-align:left;color:red;">Home</h3></a>
+<a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
 </div>
 <div class="container bg-light ">
 <form method="post" action="" enctype="multipart/form-data">
