@@ -13,7 +13,7 @@ require __DIR__ . '/vendor/autoload.php';
 <body class='bg-danger'>
     <div class="container bg-dark">
         <table class="table" id="messages">
-        <?php include('chatController.php');?>
+        <?php include('DB/chatController.php');?>
         </table>
         <form method="POST">
              <input type="text" id='names' name="name" class="form-control" required>
@@ -29,6 +29,16 @@ require __DIR__ . '/vendor/autoload.php';
     const name = document.getElementById('names').value;
     const message = document.getElementById('message').value;
     fetch(`sendMessage.php?name=${name}&message=${message}`);
+    const table = document.getElementById('messages');
+    var tr = document.createElement('tr');
+    var td = document.createElement('td'); 
+    var td2 = document.createElement('td');
+    td.innerHTML = name;
+    td2.innerHTML = message;
+    tr.appendChild(td);
+    tr.appendChild(td2);
+    tr.setAttribute('class','bg-light')
+    table.appendChild(tr);
   });
   var socket  = new WebSocket('ws://localhost:8080');
 
@@ -41,7 +51,7 @@ function transmitMessage(){
 }
 
 socket.onmessage = function(e) {
-    const table = document.getElementById('messages');
+    const table = document.querySelector('table');
     var tr = document.createElement('tr');
     var td = document.createElement('td'); 
     var td2 = document.createElement('td'); // create a new paragraph element
