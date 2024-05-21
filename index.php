@@ -19,6 +19,7 @@ $fichas = $con->getFichas();
 <a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
 <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
 </div>
+<div class="table-responsive">
 <table class="table">
     <tr>
         <th>ID</th>
@@ -102,5 +103,6 @@ if(isset($_GET['delete'])){
 }
 ?>
 </table>
+</div>
 </body>
 </html>
