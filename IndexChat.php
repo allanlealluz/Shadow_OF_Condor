@@ -13,7 +13,11 @@ require __DIR__ . '/vendor/autoload.php';
 </head>
 <body class='bg-danger'>
     <div class="container-fluid bg-dark">
-        <h2 class="text-light text-center">Sombra da Condor</h2>
+        <div class="container d-flex justify-content-left">
+        <h2 class="text-light text-center" style="padding:10px;">Sombra da Condor</h2>
+        <a href="create.php"><h3 style="text-align:left;color:red;padding:10px;">Create</h3></a>
+        <a href="indexChat.php"><h3 style="text-align:left;color:red;padding:10px;">Chat</h3></a>
+        </div>
         <table class="table text-center" id="messages">
             <thead>
                 <tr>
