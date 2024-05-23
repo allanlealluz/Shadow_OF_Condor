@@ -37,25 +37,23 @@ $fichas = $con->getFichas();
     </tr>
     <?php foreach($fichas as $ficha): ?>
     <tr>
-        <td><?php echo $ficha['id']; ?></td>
-        <td><?php echo $ficha['nome']; ?></td>
-        <td><?php echo $ficha['vitalidade']; ?></td>
-        <td><?php echo $ficha['forca']; ?></td>
-        <td><?php echo $ficha['agi']; ?></td>
-        <td><?php echo $ficha['inte']; ?></td>
-        <td><?php echo $ficha['pre']; ?></td>
-        <td><?php echo $ficha['vigor']; ?></td>
-        <td><?php echo $ficha['itens']; ?></td>
-        <td><?php echo $ficha['pericias']; ?></td>
-        <td><?php echo $ficha['defesa']; ?></td>
-        <?php if($_SESSION('user_id') == 1){?>
-
-        
+        <td><?php echo htmlspecialchars($ficha['id']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['nome']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['vitalidade']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['forca']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['agi']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['inte']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['pre']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['vigor']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['itens']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['pericias']); ?></td>
+        <td><?php echo htmlspecialchars($ficha['defesa']); ?></td>
+        <?php if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == 1): ?>
         <td>
             <a href="index.php?edit=<?php echo $ficha['id']; ?>">Editar</a>
             <a href="index.php?delete=<?php echo $ficha['id']; ?>">Deletar</a>
         </td>
-        <?php } ?>
+        <?php endif; ?>
     </tr>
     <?php endforeach; ?>
     <?php if(isset($_GET['edit'])): ?>
