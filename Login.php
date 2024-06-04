@@ -11,10 +11,21 @@
 <body>
     <div class="container">
         <form method="post">
-            <input type="text" class="text">
+            <input type="text" class="text" name="nome">
             <input type="password" name="senha" id="">
             <input type="submit" value="Entrar">
         </form>
     </div>
+    <?php 
+    include('DB/connect.php');
+    $db = new conect;
+    if(isset($_POST['nome'])){
+        $nome = htmlentities($_POST['nome']);
+        $senha = htmlentities($_POST['senha']);
+        $db->Login($nome,$password);
+    }
+    
+    
+    ?>
 </body>
 </html>
