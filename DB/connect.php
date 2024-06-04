@@ -91,4 +91,5 @@ class conect {
         return $user? true : false;
 
 }
+}
                                                                                                                                                                                          
