@@ -24,7 +24,7 @@
         $nome = htmlentities($_POST['nome']);
         $email = htmlentities($_POST['email']);
         $senha = htmlentities($_POST['senha']);
-        $db->Cadastrar($nome,$email,$senha)
+        $db->Cadastrar($nome,$email,$senha);
     }
         ?>
 </body>
