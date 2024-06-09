@@ -17,5 +17,15 @@
             <input type="submit" value="Cadastrar">
         </form>
     </div>
+    <?php 
+    include('DB/connect.php');
+    $db = new conect;
+    if(isset($_POST['nome'])){
+        $nome = htmlentities($_POST['nome']);
+        $email = htmlentities($_POST['email']);
+        $senha = htmlentities($_POST['senha']);
+        $db->Cadastrar($nome,$email,$senha)
+    }
+        ?>
 </body>
 </html>
