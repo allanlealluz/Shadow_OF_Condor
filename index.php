@@ -2,6 +2,7 @@
 require_once 'DB/connect.php';
 $con = new conect;
 $fichas = $con->getFichas();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,6 +22,13 @@ $fichas = $con->getFichas();
 <a href="Register.php"><h3 style="text-align:left;color:red;">Cadastrar</h3></a>
 <a href="Login.php"><h3 style="text-align:left;color:red;">Login</h3></a>
 </div>
+<?php 
+if(isset($_SESSION['admin'])){
+    echo 'Admin connected';
+}elseif(isset($_SESSION['id_user'])){
+    echo 'Usuario connectado';
+}
+?>
 <div class="table-responsive">
 <table class="table">
     <tr>

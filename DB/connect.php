@@ -90,7 +90,12 @@ class conect {
         if($stmt->rowCount() > 0){
             $dados =  $stmt->fetch();
             session_start();
-            $_SESSION['id_user'] = $dados['id'];
+            if($dados['id']= 1){
+                $_SESSION['admin'] = 1;
+            }else{
+                $_SESSION['id_user'] = $dados['id'];
+            }
+            
             return true;
         }else{
             return false;
