@@ -11,7 +11,11 @@
 <body>
     <div class="container">
         <form method="post">
+            <h1 class="text-center">Sombra do Condor</h1>
+            <hr>
+            <label for="nome">Nome</label>
             <input type="text" class="text" name="nome">
+            <label for="email">Senha</label>
             <input type="password" name="senha" id="">
             <input type="submit" value="Entrar">
         </form>
@@ -22,7 +26,13 @@
     if(isset($_POST['nome'])){
         $nome = htmlentities($_POST['nome']);
         $senha = htmlentities($_POST['senha']);
-        $db->Login($nome,$password);
+        $res = $db->Login($nome,$password);
+        if($res){
+            session_start();
+            header('Location: index.php');
+        }else{
+            echo "Erro ao logar";
+        };
     }
     
     
