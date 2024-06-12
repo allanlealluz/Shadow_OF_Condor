@@ -86,9 +86,15 @@ class conect {
         $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE nome = :n and senha = :s");
         $stmt->bindValue(':n', $nome);
         $stmt->bindValue(':s', hash('sha256',$senha));
-        $stmt->execute();
-        $user = $stmt->fetch();
-        return $user? true : false;
+        $stmt->execute();  
+        if($stmt->rowCount() > 0){
+            $dados =  $stmt->fetch();
+            session_start();
+            $_SESSION['id_user'] = $dados['id'];
+            return true;
+        }else{
+            return false;
+        }
 
 }
 }
