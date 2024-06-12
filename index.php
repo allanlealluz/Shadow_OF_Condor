@@ -49,12 +49,6 @@ $fichas = $con->getFichas();
         <td><?php echo htmlspecialchars($ficha['itens']); ?></td>
         <td><?php echo htmlspecialchars($ficha['pericias']); ?></td>
         <td><?php echo htmlspecialchars($ficha['defesa']); ?></td>
-        <?php if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == 1): ?>
-        <td>
-            <a href="index.php?edit=<?php echo $ficha['id']; ?>">Editar</a>
-            <a href="index.php?delete=<?php echo $ficha['id']; ?>">Deletar</a>
-        </td>
-        <?php endif; ?>
     </tr>
     <?php endforeach; ?>
     <?php if(isset($_GET['edit'])): ?>
