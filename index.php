@@ -18,6 +18,8 @@ $fichas = $con->getFichas();
 <h1 style="text-align:center;color:red;padding-bottom:2rem;">Sombra do Condor</h1>
 <a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
 <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
+<a href="Register.php"><h3 style="text-align:left;color:red;">Cadastrar</h3></a>
+<a href="Login.php"><h3 style="text-align:left;color:red;">Login</h3></a>
 </div>
 <div class="table-responsive">
 <table class="table">
@@ -33,7 +35,6 @@ $fichas = $con->getFichas();
         <th>Itens</th>
         <th>Perícia</th>
         <th>Defesa</th>
-        <th>Ações</th>
     </tr>
     <?php foreach($fichas as $ficha): ?>
     <tr>

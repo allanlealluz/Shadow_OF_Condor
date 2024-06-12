@@ -75,7 +75,7 @@ class conect {
         $stmt->execute();
     }
     function Cadastrar($nome,$email,$senha){
-        $stmt = $this->pdo->prepare('INSERT INTO usuarios (nome, email, senha) values (:n,:e,:s)');
+        $stmt = $this->pdo->prepare("INSERT INTO usuarios (nome, email, senha) values (:n,:e,:s)");
         $stmt->bindValue(':n', $nome);
         $stmt->bindValue(':e', $email);
         $stmt->bindValue(':s', hash('sha256',$senha));
@@ -83,7 +83,7 @@ class conect {
 
     }
     function Login($nome,$senha){
-        $stmt = $this->pdo->prepare('SELECT * FROM usuarios WHERE nome = :n and senha = :s');
+        $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE nome = :n and senha = :s");
         $stmt->bindValue(':n', $nome);
         $stmt->bindValue(':s', hash('sha256',$senha));
         $stmt->execute();
