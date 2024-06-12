@@ -51,50 +51,6 @@ $fichas = $con->getFichas();
         <td><?php echo htmlspecialchars($ficha['defesa']); ?></td>
     </tr>
     <?php endforeach; ?>
-    <?php if(isset($_GET['edit'])): ?>
-<h2>Editar Ficha</h2>
-<form method="post" action="">
-<div class="mb-3 bg-light">
-    <input class="form-control" type="hidden" name="id" value="<?php echo $ficha['id']; ?>">
-    <label class="form-label">Nome:</label>
-    <input class="form-control" type="text" name="nome" value="<?php echo $ficha['nome']; ?>" required>
-    <label class="form-label">Vitalidade:</label>
-</div>
-    <input class="form-control" type="number" name="vitalidade" value="<?php echo $ficha['vitalidade']; ?>" required>
-    <label class="form-label">Força:</label>
-    <input class="form-control" type="number" name="forca" value="<?php echo $ficha['forca']; ?>" required>
-    <label class="form-label">Agilidade:</label>
-<div class="mb-3">
-    <input class="form-control" type="number" name="agi" value="<?php echo $ficha['agi']; ?>" required>
-    <label class="form-label" >Inteligência:</label>
-    <input class="form-control" type="number" name="int" value="<?php echo $ficha['inte']; ?>" required>
-    <label class="form-label">Presença:</label>
-</div>
-<div class="mb-3">
-    <input class="form-control"type="number" name="pre" value="<?php echo $ficha['pre']; ?>" required>
-    <label>Vigor:</label>
-    <input class="form-control"type="number" name="vigor" value="<?php echo $ficha['vigor']; ?>" required>
-    <label>Itens:</label>
-</div>
-<div class="mb-3">
-    <input class="form-control"type="text" name="itens" value="<?php echo $ficha['itens']; ?>" required>
-    <label>Perícia:</label>
-    <input class="form-control"type="text" name="pericia" value="<?php echo $ficha['pericias']; ?>" required>
-    <label>Defesa:</label>
-    <input class="form-control"type="number" name="defesa" value="<?php echo $ficha['defesa']; ?>" required>
-    <label>Imagem:</label>
-    <input class="form-contrl" type="file" name="img" id="">
-</div>
-    <input class="form-control"type="submit" name="update" value="Atualizar">
-</form>
-</div>
-<?php endif;
-if(isset($_GET['delete'])){
-    $id = $_GET['delete'];
-    $con->deleteFicha($id);
-    header('Location: index.php');
-}
-?>
 </table>
 </div>
 </body>
