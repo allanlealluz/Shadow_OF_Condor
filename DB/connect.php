@@ -102,12 +102,19 @@ class conect {
         }
 
 }
-function buscarUserById($id){
-    $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE id = :id");
-    $stmt->bindValue(':id', $id);
-    $stmt->execute();
-    $data = $stmt->fetch();
-    return $data;
-}
+    function buscarUserById($id){
+        $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE id = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $data = $stmt->fetch();
+        return $data;
+    }
+    function AddRoteiro($title,$content){
+        $stmt = $this->pdo->prepare("INSERT INTO roteiros (titulo,conteudo,data) VALUES (:t,:c,:d)");
+        $stmt->bindValue(':t', $title);
+        $stmt->bindValue(':c',$content);
+        $stmt->bindValue(':d',date("F j, Y, g:i a"));
+        $stmt->execute();
+    }
 }
                                                                                                                                                                                          
