@@ -30,7 +30,6 @@ require __DIR__ . '/vendor/autoload.php';
         </tbody>
         </table>
         <form method="POST">
-             <input type="text" id='names' name="name" class="form-control" required>
              <textarea name="message" id='message' class="form-control" required></textarea>
              <input type="submit" value="Enviar" class="btn btn-primary" id="btn" onclick="transmitMessage()">
         </form>

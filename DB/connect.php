@@ -102,5 +102,12 @@ class conect {
         }
 
 }
+function buscarUserById($id){
+    $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE id = :id");
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $data = $stmt->fetch();
+    return $data;
+}
 }
                                                                                                                                                                                          
