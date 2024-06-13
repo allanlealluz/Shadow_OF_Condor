@@ -42,6 +42,7 @@
         $email = htmlentities($_POST['email']);
         $senha = htmlentities($_POST['senha']);
         $db->Cadastrar($nome,$email,$senha);
+        header('location:index.php');
     };
         ?>
 </body>
