@@ -26,7 +26,7 @@
     if(isset($_POST['nome'])){
         $nome = htmlentities($_POST['nome']);
         $senha = htmlentities($_POST['senha']);
-        $res = $db->Login($nome,$password);
+        $res = $db->Login($nome,$senha);
         if($res == True){
             session_start();
             header('Location: index.php');
