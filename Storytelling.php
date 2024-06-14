@@ -17,6 +17,23 @@
 </div>
 
 <div class="container bg-light ">
+<form method="post">
+    <hr>
+    <input type="text" name="titulo" id="titulo">
+    <textarea name="conteudo" id="conteudo"></textarea>
+    <input type="submit" value="Enviar">
+</form>
+<?php 
+include('DB/connect.php');
+$con = new Conect();
+if(isset($_POST['titulo'])){
+    $titulo = htmlentities($_POST['titulo']);
+    $conteudo = htmlentities($_POST['conteudo']);
+    $con->AddRoteiro($titulo,$conteudo);
+    header('location:index.php');
+}
+
+?>
 
 </div>
 </body>
