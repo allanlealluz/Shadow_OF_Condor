@@ -21,11 +21,15 @@
     $con = new Conect();
     $data = $con->BuscarTodosRoteiro();
     foreach($data as $v){
-        ?><a href="Conteudo.php?id=<?php echo $v['id'] ?>"><h2 class='text-primary'><?php echo $v['titulo']; ?></h2></div></a> <?php
+        ?>
+        <a href="Conteudo.php?id=<?php echo $v['id']; ?>">
+            <h2 class='text-primary'><?php echo $v['titulo']; ?></h2>
+        </a>
+        <?php
     }
     ?>
-<div class="container bg-idea">
-    <h1>Sombra do Condor</h1>
+</div> <!-- Fechamento da div container-fluid bg-light -->
+<div class="container bg-body-secondary">
     <hr>
     <form method="post">
         <input class='form-control' type="text" name="titulo" id="titulo">
@@ -39,7 +43,6 @@
         }     
         ?>
     </form>
-</div>
 </div>
 </body>
 </html>
