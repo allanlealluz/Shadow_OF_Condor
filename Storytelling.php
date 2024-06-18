@@ -13,6 +13,7 @@
     <h1 style="text-align:center;color:red;padding-bottom:2rem;">Sombra do Condor</h1>
     <a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
     <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
+    <a href="index.php"><h3 style="text-align:left;color:red;padding:10px;text-decoration:none;">Home</h3></a>
 </div>
 <div class='container-fluid bg-light'>
     <?php 
@@ -20,7 +21,7 @@
     $con = new Conect();
     $data = $con->BuscarTodosRoteiro();
     foreach($data as $v){
-        ?><a href="Conteudo.php?id=<?php $v['id'] ?>"><h2><?php echo $v['titulo']; ?></h2></div></a> <?php
+        ?><a href="Conteudo.php?id=<?php echo $v['id'] ?>"><h2 class='text-primary'><?php echo $v['titulo']; ?></h2></div></a> <?php
     }
     ?>
 <div class="container bg-idea">
@@ -39,29 +40,6 @@
         ?>
     </form>
 </div>
-<<<<<<< HEAD
-=======
-
-<div class="container bg-light ">
-<form method="post">
-    <hr>
-    <input type="text" name="titulo" id="titulo">
-    <textarea name="conteudo" id="conteudo"></textarea>
-    <input type="submit" value="Enviar">
-</form>
-<?php 
-include('DB/connect.php');
-$con = new Conect();
-if(isset($_POST['titulo'])){
-    $titulo = htmlentities($_POST['titulo']);
-    $conteudo = htmlentities($_POST['conteudo']);
-    $con->AddRoteiro($titulo,$conteudo);
-    header('location:index.php');
-}
-
-?>
-
->>>>>>> 165d696a5e92b7b4b92fb446951f854e7516c93f
 </div>
 </body>
 </html>

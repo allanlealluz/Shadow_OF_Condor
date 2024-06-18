@@ -122,5 +122,19 @@ class conect {
         $data = $stmt->fetchAll();
         return $data;
     }
-}
+    function BuscarRoteiroPorId($id){
+        $stmt = $this->pdo->prepare("SELECT * FROM roteiro WHERE id = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
+    function AlterRoteiro($alter,$id){
+            $stmt = $this->pdo->prepare("UPDATE roteiro SET conteudo = :conteudo WHERE id = :id");
+            $stmt->bindValue(':conteudo', $alter);
+            $stmt->bindValue(':id',$id);
+            $stmt->execute();
+    }
+    }
+
                                                                                                                                                                                          
