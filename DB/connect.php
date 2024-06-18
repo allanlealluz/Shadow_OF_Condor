@@ -110,11 +110,17 @@ class conect {
         return $data;
     }
     function AddRoteiro($title,$content){
-        $stmt = $this->pdo->prepare("INSERT INTO roteiros (titulo,conteudo,data) VALUES (:t,:c,:d)");
+        $stmt = $this->pdo->prepare("INSERT INTO roteiro (titulo,conteudo,data) VALUES (:t,:c,:d)");
         $stmt->bindValue(':t', $title);
         $stmt->bindValue(':c',$content);
         $stmt->bindValue(':d',date("F j, Y, g:i a"));
         $stmt->execute();
+    }
+    function BuscarTodosRoteiro(){
+        $stmt = $this->pdo->prepare("SELECT * FROM roteiro");
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
     }
 }
                                                                                                                                                                                          

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sombra do Condor</title>
     <link rel="shortcut icon" href="sombra_condor.png">
     <link rel="stylesheet" href="index.css">
@@ -11,13 +10,35 @@
 </head>
 <body class="bg-dark">
 <div class="container-fluid d-flex justify-content-between">
-<h1 style="text-align:center;color:red;padding-bottom:2rem;">Sombra do Condor</h1>
-<a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
-<a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
+    <h1 style="text-align:center;color:red;padding-bottom:2rem;">Sombra do Condor</h1>
+    <a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
+    <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
 </div>
-
-<div class="container bg-light ">
-
+<div class='container-fluid bg-light'>
+    <?php 
+    include('DB/connect.php');
+    $con = new Conect();
+    $data = $con->BuscarTodosRoteiro();
+    foreach($data as $v){
+        ?><a href="Conteudo.php?id=<?php $v['id'] ?>"><h2><?php echo $v['titulo']; ?></h2></div></a> <?php
+    }
+    ?>
+<div class="container bg-idea">
+    <h1>Sombra do Condor</h1>
+    <hr>
+    <form method="post">
+        <input class='form-control' type="text" name="titulo" id="titulo">
+        <textarea class='form-control' name="conteudo" id="conteudo"></textarea>
+        <input type="submit" value="Send">
+        <?php     
+        if(isset($_POST['titulo']) && isset($_POST['conteudo'])){
+            $titulo = htmlentities($_POST['titulo']);
+            $conteudo = htmlentities($_POST['conteudo']);
+            $con->AddRoteiro($titulo, $conteudo);
+        }     
+        ?>
+    </form>
+</div>
 </div>
 </body>
 </html>
