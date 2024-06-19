@@ -26,7 +26,7 @@ session_start();
         <a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
         <a href="Storytelling.php"><h3 style="text-align:left;color:red;">Roteiro</h3></a>
         <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
-        <a href="Sair.php"><h3 style="text-align:left;color:red;">Sair</h3></a>
+        <a href="User/Sair.php"><h3 style="text-align:left;color:red;">Sair</h3></a>
         </div>
         <div class="table-responsive">
         <table class="table">
@@ -71,8 +71,8 @@ session_start();
     } else {
         ?>
         <h3 class="text-light">Not connected</h3>
-        <a href="Register.php"><h3 style="text-align:left;color:red;">Cadastrar</h3></a>
-        <a href="Login.php"><h3 style="text-align:left;color:red;">Login</h3></a> 
+        <a href="User/Register.php"><h3 style="text-align:left;color:red;">Cadastrar</h3></a>
+        <a href="User/Login.php"><h3 style="text-align:left;color:red;">Login</h3></a> 
         </div>
         <div class="container bg-light">
             <h2 class='text-center'>Bem-vindo ao RPG Shadow of Condor</h2>
