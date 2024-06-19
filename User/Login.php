@@ -21,7 +21,7 @@
         </form>
     </div>
     <?php 
-    include('DB/connect.php');
+    include('../DB/connect.php');
     $db = new conect;
     if(isset($_POST['nome'])){
         $nome = htmlentities($_POST['nome']);
