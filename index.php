@@ -31,6 +31,7 @@ session_start();
         <div class="table-responsive">
         <table class="table">
             <tr>
+                <th></th>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Vitalidade</th>
@@ -45,6 +46,7 @@ session_start();
             </tr>
             <?php foreach($fichas as $ficha): ?>
             <tr>
+                <td><img src="images/<?php $ficha['image']; ?>" alt="<?php $ficha['nome']; ?>"></td>
                 <td><?php echo htmlspecialchars($ficha['id']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['nome']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['vitalidade']); ?></td>
