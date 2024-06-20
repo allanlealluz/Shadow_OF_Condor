@@ -19,7 +19,7 @@ class conect {
         $encodedItems = json_encode($items);
         $encodedSkills = json_encode($skills);
         $query = 'INSERT INTO fichas (nome, vitalidade, forca, inte, agi, pre, vigor, itens, pericias, defesa, img)
-        VALUES (:name, :health, :strength, :dexterity, :intelligence, :precision, :vigor, :encodedItems, :encodedSkills, :defense, :image)';
+        VALUES (:name, :health, :strength, :dexterity, :intelligence, :precision, :vigor, :encodedItems, :encodedSkills, :defense, :img)';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':health', $health);
@@ -31,7 +31,7 @@ class conect {
         $stmt->bindValue(':encodedItems', $encodedItems);
         $stmt->bindValue(':encodedSkills', $encodedSkills);
         $stmt->bindValue(':defense', $defense);
-        $stmt->bindValue(':image', $image);
+        $stmt->bindValue(':img', $image);
         $stmt->execute();
     }
 

@@ -1,35 +1,3 @@
-<?php
-require_once 'DB/connect.php';
-$con = new conect();
-if (isset($_POST['nome'])) {
-    $name = $_POST['nome'];
-    $health = $_POST['vitalidade'];
-    $strength = $_POST['forca'];
-    $dexterity = $_POST['agi'];
-    $intelligence = $_POST['int'];
-    $precision = $_POST['pre'];
-    $vigor = $_POST['vigor'];
-    $items = $_POST['itens'];
-    $skills = $_POST['pericia'];
-    $defense = $_POST['defesa'];
-    if(isset($_FILES["img"])){
-        $file = $_FILES["img"];
-        $dir = 'images/';
-        $imagePath = $dir . basename($file['name']);
-        $ImageName = $file['name'];
-        if(move_uploaded_file($file['tmp_name'], $imagePath)){
-            echo 'ok'.$file['name'];
-        }else{
-            $ImageName = "null.jpeg";
-            echo 'error'; 
-        }
-        
-    } else {
-        $ImageName = "null.jpeg";
-    }
-    $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills, $defense,$ImageName);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +15,7 @@ if (isset($_POST['nome'])) {
 <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
 </div>
 <div class="container bg-light ">
-<form method="post" action="" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
 <div class="container-fluid">
     <label class="form-label">Nome:</label>
     <input class="form-control" type="text" name="nome" required>
@@ -70,10 +38,41 @@ if (isset($_POST['nome'])) {
     <label class="form-label">Defesa:</label>
     <input class="form-control" type="number" name="defesa" required>
     <label>Imagem:</label>
-    <input class="form-control form-control-lg" type="file" name="img" id="">
+    <input class="form-control form-control-lg" type="file" name="img" id="img">
     <input type="submit" name="submit" value="Adicionar">
     <div>
 </form>
-
+<?php
+require_once 'DB/connect.php';
+$con = new conect();
+if (isset($_POST['nome'])) {
+    $name = $_POST['nome'];
+    $health = $_POST['vitalidade'];
+    $strength = $_POST['forca'];
+    $dexterity = $_POST['agi'];
+    $intelligence = $_POST['int'];
+    $precision = $_POST['pre'];
+    $vigor = $_POST['vigor'];
+    $items = $_POST['itens'];
+    $skills = $_POST['pericia'];
+    $defense = $_POST['defesa'];
+    $file = $_FILES["img"];
+    if(isset($file) && !empty($file)){     
+        $dir = 'images/';
+        $imagePath = $dir . basename($file['name']);
+        $ImageName = $file['name'];
+        if(move_uploaded_file($file['tmp_name'], $imagePath)){
+            echo 'ok'.$file['name'];
+            $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills, $defense,$ImageName);
+        }else{
+            $ImageName = "null.jpeg";
+            echo 'error'; 
+        }
+        
+    } else {
+        $ImageName = "null.jpeg";
+    }
+}
+?>
 </body>
 </html>

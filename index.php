@@ -50,7 +50,7 @@ session_start();
                 <td><?php echo htmlspecialchars($ficha['nome']); ?></td>
                 <td>
             <?php if ($ficha['img'] !== 'not' && !empty($ficha['img'])): ?>
-                <img src="images/<?php echo htmlspecialchars($ficha['img']); ?>" alt="<?php echo htmlspecialchars($ficha['nome']); ?>">
+                <img class='img-thumbnail' src="images/<?php echo htmlspecialchars($ficha['img']); ?>" alt="<?php echo htmlspecialchars($ficha['nome']); ?>">
             <?php else: ?>
                 <img src="images/null.jpeg" alt="Imagem padrão">
             <?php endif; ?>
