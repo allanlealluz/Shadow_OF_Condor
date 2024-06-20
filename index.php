@@ -46,9 +46,15 @@ session_start();
             </tr>
             <?php foreach($fichas as $ficha): ?>
             <tr>
-                <td><img src="images/<?php $ficha['image']; ?>" alt="<?php $ficha['nome']; ?>"></td>
                 <td><?php echo htmlspecialchars($ficha['id']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['nome']); ?></td>
+                <td>
+            <?php if ($ficha['img'] !== 'not' && !empty($ficha['img'])): ?>
+                <img src="images/<?php echo htmlspecialchars($ficha['img']); ?>" alt="<?php echo htmlspecialchars($ficha['nome']); ?>">
+            <?php else: ?>
+                <img src="images/null.jpeg" alt="Imagem padrão">
+            <?php endif; ?>
+        </td>
                 <td><?php echo htmlspecialchars($ficha['vitalidade']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['forca']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['agi']); ?></td>

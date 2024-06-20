@@ -29,7 +29,7 @@
         $res = $db->Login($nome,$senha);
         if($res == True){
             session_start();
-            header('Location: index.php');
+            header('location:../index.php');
         }else{
             echo "Erro ao logar";
         };

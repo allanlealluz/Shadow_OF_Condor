@@ -15,25 +15,11 @@ class conect {
         }
     }
 
-    function addFicha(
-        $name,
-        $health,
-        $strength,
-        $dexterity,
-        $intelligence,
-        $precision,
-        $vigor,
-        $items,
-        $skills,
-        $defense,
-        $image
-    ) {
+    function addFicha($name,$health,$strength,$dexterity,$intelligence,$precision,$vigor, $items,$skills,$defense, $image ) {
         $encodedItems = json_encode($items);
         $encodedSkills = json_encode($skills);
-
         $query = 'INSERT INTO fichas (nome, vitalidade, forca, inte, agi, pre, vigor, itens, pericias, defesa, img)
         VALUES (:name, :health, :strength, :dexterity, :intelligence, :precision, :vigor, :encodedItems, :encodedSkills, :defense, :image)';
-
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':health', $health);

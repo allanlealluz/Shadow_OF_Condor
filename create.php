@@ -1,7 +1,7 @@
 <?php
 require_once 'DB/connect.php';
 $con = new conect();
-if (isset($_POST['submit'])) {
+if (isset($_POST['nome'])) {
     $name = $_POST['nome'];
     $health = $_POST['vitalidade'];
     $strength = $_POST['forca'];
@@ -15,29 +15,19 @@ if (isset($_POST['submit'])) {
     if(isset($_FILES["img"])){
         $file = $_FILES["img"];
         $dir = 'images/';
-        $imagePath = $dir.$_FILES['img']['name'];
-        move_uploaded_file($file['tmp_name'], $imagePath);
+        $imagePath = $dir . basename($file['name']);
+        $ImageName = $file['name'];
+        if(move_uploaded_file($file['tmp_name'], $imagePath)){
+            echo 'ok'.$file['name'];
+        }else{
+            $ImageName = "null.jpeg";
+            echo 'error'; 
+        }
         
     } else {
-        $imagePath = "not";
+        $ImageName = "null.jpeg";
     }
-    $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills, $defense,$imagePath);
-}
-if(isset($_POST['update'])){
-    $id = $_POST['id'];
-    $nome = $_POST['nome'];
-    $vitalidade = $_POST['vitalidade'];
-    $força = $_POST['forca'];
-    $agi = $_POST['agi'];
-    $int = $_POST['int'];
-    $pre = $_POST['pre'];
-    $vigor = $_POST['vigor'];
-    $itens = $_POST['itens'];
-    $pericia = $_POST['pericia'];
-    $defesa = $_POST['defesa'];
-
-    $con->updateFicha($id,$nome,$vitalidade,$força,$agi,$int,$pre,$vigor,$itens,$pericia,$defesa);
-    header('Location: index.php');
+    $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills, $defense,$ImageName);
 }
 ?>
 <!DOCTYPE html>
