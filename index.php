@@ -41,6 +41,7 @@ session_start();
                 <th>Presença</th>
                 <th>Vigor</th>
                 <th>Defesa</th>
+                <th></th>
             </tr>
             <?php foreach($fichas as $ficha): ?>
             <tr>
@@ -48,9 +49,9 @@ session_start();
                 <td><?php echo htmlspecialchars($ficha['nome']); ?></td>
                 <td>
             <?php if ($ficha['img'] !== 'not' && !empty($ficha['img'])): ?>
-                <img class='img-thumbnail' src="images/<?php echo htmlspecialchars($ficha['img']); ?>" alt="<?php echo htmlspecialchars($ficha['nome']); ?>">
+                <img class='img-thumbnail' style='width:150px;height:170px;' src="images/<?php echo htmlspecialchars($ficha['img']); ?>" alt="<?php echo htmlspecialchars($ficha['nome']); ?>">
             <?php else: ?>
-                <img src="images/null.jpeg" alt="Imagem padrão">
+                <img src="images/null.jpeg" style='width:150px;height:170px;' alt="Imagem padrão">
             <?php endif; ?>
         </td>
                 <td><?php echo htmlspecialchars($ficha['vitalidade']); ?></td>
@@ -60,6 +61,8 @@ session_start();
                 <td><?php echo htmlspecialchars($ficha['pre']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['vigor']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['defesa']); ?></td>
+                <td><a href='Character.php?id= <?php echo $ficha['id']; ?>'>Ver</a></td>
+
             </tr>
             <?php endforeach; ?>
         </table>
