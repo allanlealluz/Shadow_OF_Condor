@@ -40,8 +40,6 @@ session_start();
                 <th>Inteligência</th>
                 <th>Presença</th>
                 <th>Vigor</th>
-                <th>Itens</th>
-                <th>Perícia</th>
                 <th>Defesa</th>
             </tr>
             <?php foreach($fichas as $ficha): ?>
