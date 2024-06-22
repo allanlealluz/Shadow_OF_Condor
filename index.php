@@ -59,8 +59,6 @@ session_start();
                 <td><?php echo htmlspecialchars($ficha['inte']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['pre']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['vigor']); ?></td>
-                <td><?php echo htmlspecialchars($ficha['itens']); ?></td>
-                <td><?php echo htmlspecialchars($ficha['pericias']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['defesa']); ?></td>
             </tr>
             <?php endforeach; ?>
