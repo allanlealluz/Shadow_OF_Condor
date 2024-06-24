@@ -26,7 +26,7 @@
            ?> 
            <h2 class="text-center"><?php echo $v['titulo'] ?></h2>
            <hr>
-           <p class="text-center" id="content"><?php echo $v['conteudo'] ?></p>
+           <p class="text-center h3" id="content"><?php echo $v['conteudo'] ?></p>
            <button class="btn btn-primary" onclick="editContent()">Editar Conteúdo</button>
            <button class="btn btn-success" onclick="saveContent()" style="display: none;">Salvar</button>
            <button class="btn btn-danger" onclick="cancelEdit()" style="display: none;">Cancelar</button>
