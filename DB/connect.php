@@ -121,6 +121,13 @@ class conect {
             $stmt->bindValue(':id',$id);
             $stmt->execute();
     }
+    function GetFichaPorId($id){
+        $stmt = $this->pdo->prepare("SELECT * FROM fichas WHERE id = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
     }
 
                                                                                                                                                                                          

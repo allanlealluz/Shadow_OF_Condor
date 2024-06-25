@@ -61,7 +61,7 @@ session_start();
                 <td><?php echo htmlspecialchars($ficha['pre']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['vigor']); ?></td>
                 <td><?php echo htmlspecialchars($ficha['defesa']); ?></td>
-                <td><a href='Character.php?id= <?php echo $ficha['id']; ?>'>Ver</a></td>
+                <td><a href="Character.php?id= <?php echo $ficha['id']; ?>">Ver</a></td>
 
             </tr>
             <?php endforeach; ?>

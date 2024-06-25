@@ -13,9 +13,11 @@
 <h1 style="text-align:center;color:red;padding-bottom:2rem;">Sombra do Condor</h1> 
     <div class="container-sm bg-light">
     <?php
+    if(isset($_GET['id'])){
+        $id = htmlentities($_GET['id']);
         require_once 'DB/connect.php';
         $con = new Conect();
-        $fichas = $con->getFichas();
+        $fichas = $con->GetFichaPorId($id);
         session_start();
         foreach($fichas as $ficha): ?>
                 <h1><?php echo htmlspecialchars($ficha['nome']); ?></h1>
@@ -35,7 +37,7 @@
                 <h3>Pericias:<?php echo htmlspecialchars($ficha['pericias']); ?></h3>
                 <h3>Itens:<?php echo htmlspecialchars($ficha['itens']); ?></h3>
                 <h3>Habs:<?php echo htmlspecialchars($ficha['Habs']); ?></h3>
-            <?php endforeach; ?>
+            <?php endforeach; } ?>
     ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js"></script>
