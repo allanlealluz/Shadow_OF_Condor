@@ -24,7 +24,7 @@ session_start();
         ?> 
         <h3 class="text-light">Admin connected</h3>
         <a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
-        <a href="Storytelling.php"><h3 style="text-align:left;color:red;">Roteiro</h3></a>
+        <a href="StoryTelling/Storytelling.php"><h3 style="text-align:left;color:red;">Roteiro</h3></a>
         <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
         <a href="User/Sair.php"><h3 style="text-align:left;color:red;">Sair</h3></a>
         </div>

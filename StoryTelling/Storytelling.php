@@ -17,7 +17,7 @@
 </div>
 <div class='container-fluid bg-light'>
     <?php 
-    include('DB/connect.php');
+    include('../DB/connect.php');
     $con = new Conect();
     $data = $con->BuscarTodosRoteiro();
     foreach($data as $v){

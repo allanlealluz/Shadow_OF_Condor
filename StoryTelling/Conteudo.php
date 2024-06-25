@@ -19,7 +19,7 @@
     <?php 
     if(isset($_GET['id'])){
         $id = htmlentities($_GET['id']);
-        include('DB/connect.php');
+        include('../DB/connect.php');
         $con = new Conect();
         $data = $con->BuscarRoteiroPorId($id);
         foreach($data as $v){
