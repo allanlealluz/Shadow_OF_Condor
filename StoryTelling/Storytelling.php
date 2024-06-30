@@ -11,9 +11,9 @@
 <body class="bg-secondary">
 <div class="container-fluid d-flex justify-content-between bg-dark">
     <h1 style="text-align:center;color:red;padding-bottom:2rem;">Sombra do Condor</h1>
-    <a href="create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
-    <a href="indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
-    <a href="index.php"><h3 style="text-align:left;color:red;padding:10px;text-decoration:none;">Home</h3></a>
+    <a href="../create.php"><h3 style="text-align:left;color:red;">Create</h3></a>
+    <a href="../indexChat.php"><h3 style="text-align:left;color:red;">Chat</h3></a>
+    <a href="../index.php"><h3 style="text-align:left;color:red;padding:10px;text-decoration:none;">Home</h3></a>
 </div>
 <div class='container-fluid bg-light'>
     <?php 
