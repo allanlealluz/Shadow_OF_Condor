@@ -35,6 +35,8 @@
     <input class="form-control"type="text" name="itens" required>
     <label class="form-label">Perícia:</label>
     <input class="form-control"type="text" name="pericia" required>
+    <label class="form-label">Habilidades:</label>
+    <textarea class="form-control" name="habs" required></textarea>
     <label class="form-label">Defesa:</label>
     <input class="form-control" type="number" name="defesa" required>
     <label>Imagem:</label>
@@ -46,24 +48,24 @@
 require_once 'DB/connect.php';
 $con = new conect();
 if (isset($_POST['nome'])) {
-    $name = $_POST['nome'];
-    $health = $_POST['vitalidade'];
-    $strength = $_POST['forca'];
-    $dexterity = $_POST['agi'];
-    $intelligence = $_POST['int'];
-    $precision = $_POST['pre'];
-    $vigor = $_POST['vigor'];
-    $items = $_POST['itens'];
-    $skills = $_POST['pericia'];
-    $defense = $_POST['defesa'];
-    $file = $_FILES["img"];
+    $name = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $health = filter_input(INPUT_POST, 'vitalidade', FILTER_VALIDATE_INT);
+    $strength = filter_input(INPUT_POST, 'forca', FILTER_VALIDATE_INT);
+    $dexterity = filter_input(INPUT_POST, 'agi', FILTER_VALIDATE_INT);
+    $intelligence = filter_input(INPUT_POST, 'int', FILTER_VALIDATE_INT);
+    $precision = filter_input(INPUT_POST, 'pre', FILTER_VALIDATE_INT);
+    $vigor = filter_input(INPUT_POST, 'vigor', FILTER_VALIDATE_INT);
+    $items = filter_input(INPUT_POST, 'itens', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $skills = filter_input(INPUT_POST, 'pericia', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $habs = filter_input(INPUT_POST, 'habs', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $defense = filter_input(INPUT_POST, 'defesa', FILTER_VALIDATE_INT);
     if(isset($file) && !empty($file)){     
         $dir = 'images/';
         $imagePath = $dir . basename($file['name']);
         $ImageName = $file['name'];
         if(move_uploaded_file($file['tmp_name'], $imagePath)){
             echo 'ok'.$file['name'];
-            $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills, $defense,$ImageName);
+            $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills,$habs, $defense,$ImageName);
         }else{
             $ImageName = "null.jpeg";
             echo 'error'; 
@@ -71,6 +73,7 @@ if (isset($_POST['nome'])) {
         
     } else {
         $ImageName = "null.jpeg";
+        $con->addFicha($name, $health, $strength, $dexterity, $intelligence, $precision, $vigor, $items, $skills,$habs, $defense,$ImageName);
     }
 }
 ?>

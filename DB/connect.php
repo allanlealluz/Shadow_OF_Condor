@@ -15,11 +15,11 @@ class conect {
         }
     }
 
-    function addFicha($name,$health,$strength,$dexterity,$intelligence,$precision,$vigor, $items,$skills,$defense, $image ) {
+    function addFicha($name,$health,$strength,$dexterity,$intelligence,$precision,$vigor, $items,$skills,$habs,$defense, $image ) {
         $encodedItems = json_encode($items);
         $encodedSkills = json_encode($skills);
-        $query = 'INSERT INTO fichas (nome, vitalidade, forca, inte, agi, pre, vigor, itens, pericias, defesa, img)
-        VALUES (:name, :health, :strength, :dexterity, :intelligence, :precision, :vigor, :encodedItems, :encodedSkills, :defense, :img)';
+        $query = 'INSERT INTO fichas (nome, vitalidade, forca, inte, agi, pre, vigor, itens, pericias,Habs, defesa, img)
+        VALUES (:name, :health, :strength, :dexterity, :intelligence, :precision, :vigor, :encodedItems, :encodedSkills,:habs, :defense, :img)';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':name', $name);
         $stmt->bindValue(':health', $health);
@@ -30,6 +30,7 @@ class conect {
         $stmt->bindValue(':vigor', $vigor);
         $stmt->bindValue(':encodedItems', $encodedItems);
         $stmt->bindValue(':encodedSkills', $encodedSkills);
+        $stmt->bindValue(':habs', $habs);
         $stmt->bindValue(':defense', $defense);
         $stmt->bindValue(':img', $image);
         $stmt->execute();
