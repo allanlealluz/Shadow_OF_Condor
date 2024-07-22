@@ -1,6 +1,6 @@
 <?php
-include('config.php');
-include('firebaseRDB.php');
+include 'config.php';
+include 'firebaseRDB.php';
 $database = new firebaseRDB($databaseURL);
 $films = $database->retrieve("film");
 $films = json_decode($films, true);

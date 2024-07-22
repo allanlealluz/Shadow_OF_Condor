@@ -88,7 +88,7 @@ class conect {
             return false;
         }
 
-}
+    }
     function buscarUserById($id){
         $stmt = $this->pdo->prepare("SELECT * FROM usuarios WHERE id = :id");
         $stmt->bindValue(':id', $id);
