@@ -25,7 +25,7 @@ require __DIR__ . '/vendor/autoload.php';
                 </tr>
             </thead>       
         <tbody>
-             <?php include('DB/chatController.php');?>
+             <?php include 'DB/chatController.php';?>
         </tbody>
         </table>
         <form method="POST">
