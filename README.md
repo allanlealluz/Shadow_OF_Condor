@@ -1,6 +1,6 @@
 # Shadow of Condor
 
-## A Real-time Chat RPG Integrated with Firebase Database
+## A Real-time Chat RPG Integrated with Firebase Database and MySql
 
 This project is a real-time chat role-playing game (RPG) system that uses PHP, JavaScript, and Bootstrap for the design. The system is integrated with a Firebase database to store and manage game data.
 
